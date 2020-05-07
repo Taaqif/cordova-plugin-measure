@@ -167,6 +167,11 @@ extension ViewController {
         messageLabel.text = "Detecting the world…"
         resetButton.isHidden = true
         resetImageView.isHidden = true
+        if #available(iOS 11.3, *) {
+            sessionConfiguration.planeDetection = [.horizontal, .vertical]
+        } else {
+            sessionConfiguration.planeDetection = [.horizontal]
+        }
         session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
         resetValues()
     }
