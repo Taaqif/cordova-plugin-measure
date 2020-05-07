@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var resetImageView: UIImageView!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    
+
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
     fileprivate lazy var isMeasuring = false;
@@ -45,53 +45,57 @@ final class ViewController: UIViewController {
 
         return list;
     }
-    
+
     /// Delegate
     var delegate: ViewControllerDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScene()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         session.pause()
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        resetValues()
-        isMeasuring = true
-        targetImageView.image = UIImage(named: "targetGreen")
 
-        if (delegate?.allowMultiple() == false) {
-            resetButton.isHidden = true
-            resetImageView.isHidden = true
-            for line in lines {
-                line.removeFromParentNode()
-            }
-            lines.removeAll()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(isMeasuring) {
+                isMeasuring = false
+                targetImageView.image = UIImage(named: "targetWhite")
+                if let line = currentLine {
+                    lines.append(line)
+                    currentLine = nil
+                    resetButton.isHidden = false
+                    resetImageView.isHidden = false
+
+                    delegate?.onUpdateMeasure(nodeName: line.getValue() ?? "")
+                }
+        } else {
+                resetValues()
+                isMeasuring = true
+                targetImageView.image = UIImage(named: "targetGreen")
+
+                if (delegate?.allowMultiple() == false) {
+                    resetButton.isHidden = true
+                    resetImageView.isHidden = true
+                    for line in lines {
+                        line.removeFromParentNode()
+                    }
+                    lines.removeAll()
+                }
         }
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isMeasuring = false
-        targetImageView.image = UIImage(named: "targetWhite")
-        if let line = currentLine {
-            lines.append(line)
-            currentLine = nil
-            resetButton.isHidden = false
-            resetImageView.isHidden = false
-            
-            delegate?.onUpdateMeasure(nodeName: line.getValue() ?? "")
-        }
+
     }
-    
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -105,15 +109,15 @@ extension ViewController: ARSCNViewDelegate {
             self?.detectObjects()
         }
     }
-    
+
     func session(_ session: ARSession, didFailWithError error: Error) {
         messageLabel.text = "Error occurred"
     }
-    
+
     func sessionWasInterrupted(_ session: ARSession) {
         messageLabel.text = "Interrupted"
     }
-    
+
     func sessionInterruptionEnded(_ session: ARSession) {
         messageLabel.text = "Interruption ended"
     }
@@ -136,7 +140,7 @@ extension ViewController {
         alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-    
+
     @IBAction func resetButtonTapped(button: UIButton) {
         resetButton.isHidden = true
         resetImageView.isHidden = true
@@ -145,7 +149,7 @@ extension ViewController {
         }
         lines.removeAll()
     }
-    
+
     @IBAction func closeButtonTapped(button: UIButton) {
         delegate?.closeView();
     }
@@ -166,13 +170,13 @@ extension ViewController {
         session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
         resetValues()
     }
-    
+
     fileprivate func resetValues() {
         isMeasuring = false
         startValue = SCNVector3()
         endValue =  SCNVector3()
     }
-    
+
     fileprivate func detectObjects() {
         guard let worldPosition = sceneView.realWorldVector(screenPosition: view.center) else { return }
         targetImageView.isHidden = false
