@@ -24,6 +24,7 @@ import com.google.ar.sceneform.ux.ArFragment
 
 class MeasurePluginActivity : AppCompatActivity() {
     var allowMultiple: Boolean = false
+    var unit: String = 'cm'
 
     private val measureArray = arrayListOf<String>()
 
@@ -60,10 +61,14 @@ class MeasurePluginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val extras: Bundle = getIntent().getExtras()
+
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(getLayoutId())
 
         allowMultiple = savedInstanceState?.getBoolean("allowMultiple") ?: false
+        unit = savedInstanceState?.getString("unit") ?: extras.getString("unit")
 
         initView()
     }
@@ -195,7 +200,7 @@ class MeasurePluginActivity : AppCompatActivity() {
                                 .setView(this@MeasurePluginActivity, getRenderableTextId())
                                 .build()
                                 .thenAccept { it ->
-                                    (it.view as TextView).text = "${String.format("%.1f", length * 100)}cm"
+                                    (it.view as TextView).text = "${String.format("%.1f", length * 100)}${unit}"
                                     it.isShadowCaster = false
                                     FaceToCameraNode().apply {
                                         setParent(lineNode)

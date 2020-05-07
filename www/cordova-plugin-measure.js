@@ -15,6 +15,6 @@ exports.onFinish = function (success = function(){}, error = function(){}) {
     exec(success, error, pluginName, 'setFinishListener');
 };
 
-exports.start = function (options = {allowMultiplePoints: false}) {
+exports.start = function (options = {allowMultiplePoints: false, unit: 'cm'}) {
     exec(undefined, undefined, pluginName, 'addARView', [options]);
 };
