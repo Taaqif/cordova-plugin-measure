@@ -136,7 +136,7 @@ class MeasurePluginActivity : AppCompatActivity() {
                 if (unit === "cm") {
                     val length = anchorInfoBean.length * 100 // Meter to CM
                 } else {
-                    val length = anchorInfoBean.length * 39.3701 // Meter to IN
+                    val length = anchorInfoBean.length * 39.37007874 // Meter to IN
                 }
 
                 val lengthTxt = "${String.format("%.1f", length)}${unitTxt}"
