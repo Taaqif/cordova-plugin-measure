@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-measure" version="1.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-measure" version="1.2.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-plugin-measure</name>
-    
+
     <js-module name="cordova-plugin-measure" src="www/cordova-plugin-measure.js">
         <clobbers target="cordova.plugins.measure"/>
     </js-module>
@@ -29,12 +29,12 @@
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.CAMERA" />
       <uses-feature android:name="android.hardware.camera" android:required="true" />
-      <uses-feature android:name="android.hardware.camera.ar" android:required="true" />   
+      <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity android:name="com.gj.arcoredraw.MeasurePluginActivity" android:label="Measure Activity" android:theme="@style/Theme.AppCompat.Light">
       </activity>
-      <meta-data android:name="com.google.ar.core" android:value="optional" />  
+      <meta-data android:name="com.google.ar.core" android:value="optional" />
       <meta-data android:name="com.google.ar.sceneform.ux" android:value="optional" />
     </config-file>
 
