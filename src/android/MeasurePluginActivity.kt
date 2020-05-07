@@ -26,6 +26,7 @@ class MeasurePluginActivity : AppCompatActivity() {
     var allowMultiple: Boolean = false
     var unit: String = "cm"
     var unitTxt: String = "cm"
+    var length: Double = 0;
 
     private val measureArray = arrayListOf<String>()
 
@@ -134,16 +135,16 @@ class MeasurePluginActivity : AppCompatActivity() {
                 anchorInfoBean.length = Math.sqrt((dx * dx + dy * dy + dz * dz).toDouble())
 
                 if (unit === "cm") {
-                    val length = anchorInfoBean.length * 100 // Meter to CM
+                    length = anchorInfoBean.length * 100 // Meter to CM
                 } else {
-                    val length = anchorInfoBean.length * 39.37007874 // Meter to IN
+                    length = anchorInfoBean.length * 39.37007874 // Meter to IN
                 }
 
                 val lengthTxt = "${String.format("%.1f", length)}${unitTxt}"
                 measureArray.add(lengthTxt)
                 MeasurePluginCallback.onUpdate(lengthTxt)
 
-                drawLine(startAnchor, endAnchor, length)
+                drawLine(startAnchor, endAnchor)
             } else {
                 startNode = AnchorNode(hitResult.createAnchor())
                 startNode.setParent(getUI_ArSceneView().arSceneView.scene)
@@ -160,7 +161,7 @@ class MeasurePluginActivity : AppCompatActivity() {
         }
     }
 
-    private fun drawLine(firstAnchor: Anchor, secondAnchor: Anchor, length: Double) {
+    private fun drawLine(firstAnchor: Anchor, secondAnchor: Anchor) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val firstAnchorNode = AnchorNode(firstAnchor)
             startNodeArray.add(firstAnchorNode)
