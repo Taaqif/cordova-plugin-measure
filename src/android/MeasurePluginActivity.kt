@@ -26,7 +26,7 @@ class MeasurePluginActivity : AppCompatActivity() {
     var allowMultiple: Boolean = false
     var unit: String = "cm"
     var unitTxt: String = "cm"
-    var length: Double = 0;
+    var length: Double = 0.0;
 
     private val measureArray = arrayListOf<String>()
 
