@@ -1,0 +1,54 @@
+{
+  "_from": "cordova-plugin-measure@^1.2.0",
+  "_id": "cordova-plugin-measure@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ggLOie2jHpYb903Jfmcy2X7rwwwbDcTncEmTJg+6C51iMQwV87ziv2R9B500bay4kXRS3O0QqVZvpAq1WwI9KA==",
+  "_location": "/cordova-plugin-measure",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-measure@^1.2.0",
+    "name": "cordova-plugin-measure",
+    "escapedName": "cordova-plugin-measure",
+    "rawSpec": "^1.2.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.2.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-measure/-/cordova-plugin-measure-1.2.0.tgz",
+  "_shasum": "8ba941e36913eee1322230000a2066fad03422ca",
+  "_spec": "cordova-plugin-measure@^1.2.0",
+  "_where": "D:\\projets\\major-app",
+  "author": {
+    "name": "Robson Alviani",
+    "email": "robsonala@gmail.com"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-measure",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {
+    "q": "^1.5.1",
+    "xml2js": "^0.4.19"
+  },
+  "deprecated": false,
+  "description": "Cordova plugin using ARKit(iOS) and ARCore(Android) to calculate distance of real world objects",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "arkit",
+    "ar",
+    "arcore"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-measure",
+  "version": "1.2.0"
+}
