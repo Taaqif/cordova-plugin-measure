@@ -56,12 +56,14 @@ class MeasurePlugin : CordovaPlugin() {
             } else if (action == "addARView") {
                 var options = data.getJSONObject(0)
                 val allowMultiple = options.getBoolean("allowMultiplePoints")
-                val unit = options.getBoolean("unit")
+                val unit = options.getString("unit")
+                val unitTxt = options.getString("unitTxt")
 
                 var intent = Intent().apply {
                     setClass(cordova.getActivity().getApplicationContext(), MeasurePluginActivity::class.java)
                     putExtra("allowMultiple", false)
                     putExtra("unit", unit)
+                    putExtra("unitTxt", unitTxt)
                 }
                 cordova.startActivityForResult(this, intent, 0)
             } else {

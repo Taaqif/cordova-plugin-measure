@@ -25,6 +25,7 @@ import com.google.ar.sceneform.ux.ArFragment
 class MeasurePluginActivity : AppCompatActivity() {
     var allowMultiple: Boolean = false
     var unit: String = "cm"
+    var unitTxt: String = "cm"
 
     private val measureArray = arrayListOf<String>()
 
@@ -69,6 +70,7 @@ class MeasurePluginActivity : AppCompatActivity() {
 
         allowMultiple = savedInstanceState?.getBoolean("allowMultiple") ?: false
         unit = savedInstanceState?.getString("unit") ?: extras.getString("unit")
+        unitTxt = savedInstanceState?.getString("unitTxt") ?: extras.getString("unitTxt")
 
         initView()
     }
@@ -131,11 +133,17 @@ class MeasurePluginActivity : AppCompatActivity() {
 
                 anchorInfoBean.length = Math.sqrt((dx * dx + dy * dy + dz * dz).toDouble())
 
-                val lengthTxt = "${String.format("%.1f", anchorInfoBean.length * 100)}cm"
+                if (unit === "cm") {
+                    val length = anchorInfoBean.length * 100 // Meter to CM
+                } else {
+                    val length = anchorInfoBean.length * 39.3701 // Meter to IN
+                }
+
+                val lengthTxt = "${String.format("%.1f", length)}${unitTxt}"
                 measureArray.add(lengthTxt)
                 MeasurePluginCallback.onUpdate(lengthTxt)
 
-                drawLine(startAnchor, endAnchor, anchorInfoBean.length)
+                drawLine(startAnchor, endAnchor, length)
             } else {
                 startNode = AnchorNode(hitResult.createAnchor())
                 startNode.setParent(getUI_ArSceneView().arSceneView.scene)
@@ -200,7 +208,7 @@ class MeasurePluginActivity : AppCompatActivity() {
                                 .setView(this@MeasurePluginActivity, getRenderableTextId())
                                 .build()
                                 .thenAccept { it ->
-                                    (it.view as TextView).text = "${String.format("%.1f", length * 100)}${unit}"
+                                    (it.view as TextView).text = "${String.format("%.1f", length)}${unitTxt}"
                                     it.isShadowCaster = false
                                     FaceToCameraNode().apply {
                                         setParent(lineNode)
