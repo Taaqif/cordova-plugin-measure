@@ -24,7 +24,7 @@ import com.google.ar.sceneform.ux.ArFragment
 
 class MeasurePluginActivity : AppCompatActivity() {
     var allowMultiple: Boolean = false
-    var unit: String = 'cm'
+    var unit: String = "cm"
 
     private val measureArray = arrayListOf<String>()
 
