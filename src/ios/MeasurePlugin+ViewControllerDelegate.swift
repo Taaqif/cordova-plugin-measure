@@ -4,6 +4,14 @@ extension MeasurePlugin: ViewControllerDelegate {
         return allowMultiplePoints ?? false;
     }
 
+    func getUnit() -> String {
+        return unit ?? "cm";
+    }
+
+    func getTitle() -> String {
+        return unitTxt ?? "Centimeter";
+    }
+
     func closeView() {
         let data = myViewController.getMeasures();
         var result: CDVPluginResult
@@ -12,10 +20,10 @@ extension MeasurePlugin: ViewControllerDelegate {
         } else {
             result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: data)
         }
-        
+
         myViewController.view.removeFromSuperview()
         self.myViewController = nil
-        
+
         result.setKeepCallbackAs(true)
         commandDelegate!.send(result, callbackId: finishListenerCallbackId)
     }
@@ -25,11 +33,11 @@ extension MeasurePlugin: ViewControllerDelegate {
         result.setKeepCallbackAs(true)
         commandDelegate!.send(result, callbackId: measureListenerCallbackId)
     }
-    
+
     @objc func setMeasureListener(_ command: CDVInvokedUrlCommand) {
         measureListenerCallbackId = command.callbackId
     }
-    
+
     @objc func setFinishListener(_ command: CDVInvokedUrlCommand) {
         finishListenerCallbackId = command.callbackId
     }

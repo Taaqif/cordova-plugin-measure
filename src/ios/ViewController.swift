@@ -126,20 +126,6 @@ extension ViewController: ARSCNViewDelegate {
 // MARK: - Users Interactions
 
 extension ViewController {
-    @IBAction func meterButtonTapped(button: UIButton) {
-        let alertVC = UIAlertController(title: "Settings", message: "Please select distance unit options", preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: DistanceUnit.centimeter.title, style: .default) { [weak self] _ in
-            self?.unit = .centimeter
-        })
-        alertVC.addAction(UIAlertAction(title: DistanceUnit.inch.title, style: .default) { [weak self] _ in
-            self?.unit = .inch
-        })
-        alertVC.addAction(UIAlertAction(title: DistanceUnit.meter.title, style: .default) { [weak self] _ in
-            self?.unit = .meter
-        })
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertVC, animated: true, completion: nil)
-    }
 
     @IBAction func resetButtonTapped(button: UIButton) {
         resetButton.isHidden = true
@@ -167,11 +153,19 @@ extension ViewController {
         messageLabel.text = "Detecting the world…"
         resetButton.isHidden = true
         resetImageView.isHidden = true
+
+        if (delegate?.getUnit() == "cm") {
+            self?.unit = .centimeter
+        } else {
+            self?.unit = .inch
+        }
+
         if #available(iOS 11.3, *) {
             sessionConfiguration.planeDetection = [.horizontal, .vertical]
         } else {
             sessionConfiguration.planeDetection = [.horizontal]
         }
+
         session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
         resetValues()
     }
