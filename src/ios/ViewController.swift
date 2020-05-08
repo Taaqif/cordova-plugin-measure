@@ -12,6 +12,7 @@ import ARKit
 
 @objc protocol ViewControllerDelegate: class {
     func allowMultiple() -> Bool
+    func getUnit() -> String
     func closeView()
     func onUpdateMeasure(nodeName: String)
 }
@@ -74,7 +75,7 @@ final class ViewController: UIViewController {
                     resetButton.isHidden = false
                     resetImageView.isHidden = false
 
-                    delegate?.onUpdateMeasure(nodeName: line.getValue() ?? "")
+                    delegate?.onUpdateMeasure(nodeName: line.getValue())
                 }
         } else {
                 resetValues()
@@ -155,9 +156,9 @@ extension ViewController {
         resetImageView.isHidden = true
 
         if (delegate?.getUnit() == "cm") {
-            self?.unit = .centimeter
+            self.unit = .centimeter
         } else {
-            self?.unit = .inch
+            self.unit = .inch
         }
 
         if #available(iOS 11.3, *) {

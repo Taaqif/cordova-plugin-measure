@@ -8,10 +8,6 @@ extension MeasurePlugin: ViewControllerDelegate {
         return unit ?? "cm";
     }
 
-    func getTitle() -> String {
-        return unitTxt ?? "Centimeter";
-    }
-
     func closeView() {
         let data = myViewController.getMeasures();
         var result: CDVPluginResult
