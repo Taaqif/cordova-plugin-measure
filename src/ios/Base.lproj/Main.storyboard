@@ -45,6 +45,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reset" translatesAutoresizingMaskIntoConstraints="NO" id="VG8-Zs-vEz" userLabel="Reset Image View">
                                 <rect key="frame" x="16" y="60" width="18" height="18"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZd-iq-Ncg" userLabel="Meter Button">
+                                <rect key="frame" x="0.0" y="631" width="34" height="36"/>
+                                <connections>
+                                    <action selector="meterButtonTappedWithButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="clG-Vv-g0l"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDm-QB-S8n" userLabel="Reset Button">
                                 <rect key="frame" x="0.0" y="44" width="44" height="44"/>
                                 <constraints>
