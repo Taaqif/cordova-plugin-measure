@@ -25,8 +25,8 @@ import SceneKit
                 let multiplePointsEnabled = options.object(forKey: "allowMultiplePoints") as! Bool;
 
                 self.allowMultiplePoints = multiplePointsEnabled
-                self.unit = options.object(forKey: "unit") as! String;
-                self.unitTxt = options.object(forKey: "unitTxt") as! String;
+                self.unit = options.object(forKey: "unit") as? String;
+                self.unitTxt = options.object(forKey: "unitTxt") as? String;
 
                 guard let superview = self.webView.superview else { return }
                 superview.insertSubview(self.myViewController.view, aboveSubview: self.webView)
