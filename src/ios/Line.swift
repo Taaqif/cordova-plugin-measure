@@ -61,6 +61,7 @@ final class Line {
     fileprivate let sceneView: ARSCNView!
     fileprivate let startVector: SCNVector3!
     fileprivate let unit: DistanceUnit!
+    fileprivate let unitTxt: String!
 
     init(sceneView: ARSCNView, startVector: SCNVector3, unit: DistanceUnit, unitTxt: String) {
         self.sceneView = sceneView

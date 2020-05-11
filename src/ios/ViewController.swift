@@ -13,6 +13,7 @@ import ARKit
 @objc protocol ViewControllerDelegate: class {
     func allowMultiple() -> Bool
     func getUnit() -> String
+    func getTitle() -> String
     func closeView()
     func onUpdateMeasure(nodeName: String)
 }
