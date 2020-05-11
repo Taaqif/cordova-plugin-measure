@@ -11,13 +11,9 @@ import ARKit
 
 extension ARSCNView {
     func realWorldVector(screenPosition: CGPoint) -> SCNVector3? {
-            var results: [ARHitTestResult]
+        var results: [ARHitTestResult]
 
-            if #available(iOS 11.3, *) {
-                results = self.hitTest(screenPosition, types: [.existingPlaneUsingGeometry])
-            } else {
-                results = self.hitTest(screenPosition, types: [.existingPlaneUsingExtent])
-            }
+        results = self.hitTest(screenPosition, types: [.featurePoint])
 
         guard let result = results.first else { return nil }
         return SCNVector3.positionFromTransform(result.worldTransform)
