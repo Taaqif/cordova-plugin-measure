@@ -189,7 +189,7 @@ extension ViewController {
         if isMeasuring {
             if startValue == vectorZero {
                 startValue = worldPosition
-                currentLine = Line(sceneView: sceneView, startVector: startValue, unit: unit, unitTxt: delegate.getTitle())
+                currentLine = Line(sceneView: sceneView, startVector: startValue, unit: unit, unitTxt: delegate?.getTitle() ?? "cm")
             }
             endValue = worldPosition
             currentLine?.update(to: endValue)
