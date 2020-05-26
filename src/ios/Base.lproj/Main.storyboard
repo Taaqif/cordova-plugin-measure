@@ -37,8 +37,8 @@
                                 <rect key="frame" x="10" y="826" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJm-D1-Spp" userLabel="Message Label">
-                                <rect key="frame" x="34" y="828.5" width="364" height="15"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <rect key="frame" x="34" y="824" width="364" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -46,7 +46,7 @@
                                 <rect key="frame" x="16" y="60" width="18" height="18"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZd-iq-Ncg" userLabel="Meter Button">
-                                <rect key="frame" x="0.0" y="631" width="34" height="36"/>
+                                <rect key="frame" x="0.0" y="826" width="34" height="70"/>
                                 <connections>
                                     <action selector="meterButtonTappedWithButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="clG-Vv-g0l"/>
                                 </connections>
