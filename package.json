@@ -1,7 +1,7 @@
 {
   "author": {
-    "name": "Robson Alviani",
-    "email": "robsonala@gmail.com"
+    "name": "Emanuel Garon",
+    "email": "egaron@mbiance.com"
   },
   "bundleDependencies": false,
   "cordova": {
@@ -27,5 +27,5 @@
   ],
   "license": "MIT",
   "name": "cordova-plugin-measure",
-  "version": "1.2.18"
+  "version": "1.2.19"
 }
