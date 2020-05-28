@@ -16,7 +16,7 @@ extension ARSCNView {
         if #available(iOS 11.3, *) {
             results = self.hitTest(screenPosition, types: [.existingPlaneUsingGeometry])
         } else {
-            results = self.hitTest(screenPosition, types: [.existingPlaneUsingExtent])
+            results = self.hitTest(screenPosition, types: [.existingPlane])
         }
 
         guard let result = results.first else { return nil }
