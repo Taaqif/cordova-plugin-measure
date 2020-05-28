@@ -134,7 +134,7 @@ class MeasurePluginActivity : AppCompatActivity() {
 
                 anchorInfoBean.length = Math.sqrt((dx * dx + dy * dy + dz * dz).toDouble())
 
-                if (unit === "cm") {
+                if (unit == "cm") {
                     length = anchorInfoBean.length * 100 // Meter to CM
                 } else {
                     length = anchorInfoBean.length * 39.37007874 // Meter to IN
