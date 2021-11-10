@@ -38,10 +38,10 @@
       <meta-data android:name="com.google.ar.sceneform.ux" android:value="optional" />
     </config-file>
 
-    <source-file src="src/android/MeasurePlugin.kt" target-dir="app/src/main/java/cordova/plugin"/>
-    <source-file src="src/android/MeasurePluginActivity.kt" target-dir="app/src/main/java/cordova/plugin"/>
-    <source-file src="src/android/AnchorInfoBean.kt" target-dir="app/src/main/java/cordova/plugin"/>
-    <source-file src="src/android/FaceToCameraNode.kt" target-dir="app/src/main/java/cordova/plugin"/>
+    <source-file src="src/android/MeasurePlugin.kt" target-dir="src/com/gj/arcoredraw"/>
+    <source-file src="src/android/MeasurePluginActivity.kt" target-dir="src/com/gj/arcoredraw"/>
+    <source-file src="src/android/AnchorInfoBean.kt" target-dir="src/com/gj/arcoredraw"/>
+    <source-file src="src/android/FaceToCameraNode.kt" target-dir="src/com/gj/arcoredraw"/>
 
     <source-file src="src/android/activity_measureplugin.xml" target-dir="res/layout"/>
     <source-file src="src/android/renderable_text.xml" target-dir="res/layout"/>
